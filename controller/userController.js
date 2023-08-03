@@ -15,4 +15,14 @@ const createUser = async (req, res) => {
     })
 }
 
-module.exports = { createUser };
+const returnUser = async (req, res) => {
+    try{
+        const users = await User.findAll();
+        return res.json(users)
+    } catch{
+        console.log(`Erro ao buscar usuários: ${error}`);
+        return null
+    }
+}
+   
+module.exports = { createUser, returnUser };
